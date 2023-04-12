@@ -59,7 +59,7 @@ type azureClientsCreatorMI interface {
 var sampleConfig string
 
 func (r *AzureMonitorMI) Description() string {
-	return "Generates a random number"
+	return "Azure Monitoring using MI"
 }
 
 func (am *AzureMonitorMI) SampleConfig() string {
@@ -70,6 +70,7 @@ func (am *AzureMonitorMI) SampleConfig() string {
 func (am *AzureMonitorMI) Init() error {
 	var err error
 	//am.azureClients, err = am.azureManager.createAzureClients()
+	fmt.Println("Init method called")
 	am.azureClients, err = am.azureManager.createAzureClientsMI(am.SubscriptionID)
 	if err != nil {
 		return err
@@ -166,10 +167,11 @@ func (am *AzureMonitorMI) setReceiver() error {
 
 func (acm *azureClientsManagerMI) createAzureClientsMI(
 	subscriptionID string) (*receiver.AzureClients, error) {
+	fmt.Println("call made to createAzureClientsMI")
 	azureClients, err := receiver.CreateMIAzureClients(subscriptionID)
 	//azureClients, err := receiver.CreateMIAzureClients(subscriptionID)
 	if err != nil {
-		return nil, fmt.Errorf("error creating Azure clients: %w", err)
+		return nil, fmt.Errorf("error creating Azure clients for Managed Identity: %w", err)
 	}
 
 	return azureClients, nil
@@ -181,6 +183,7 @@ func (acm *azureClientsManager) createAzureClients(
 	clientSecret string,
 	tenantID string,
 ) (*receiver.AzureClients, error) {
+	fmt.Println("call made to Azure Client using clientid and secret")
 	azureClients, err := receiver.CreateAzureClients(subscriptionID, clientID, clientSecret, tenantID)
 	//azureClients, err := receiver.CreateMIAzureClients(subscriptionID)
 	if err != nil {
@@ -192,6 +195,7 @@ func (acm *azureClientsManager) createAzureClients(
 
 func init() {
 	inputs.Add("azure_monitor_mi", func() telegraf.Input {
+		fmt.Println("Call to init")
 		return &AzureMonitorMI{
 			azureManager: &azureClientsManagerMI{},
 		}

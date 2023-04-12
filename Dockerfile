@@ -1,16 +1,29 @@
-FROM bitnami/git AS git-psi
+# Get repo for Azure Monitor MI
+FROM bitnami/git AS git-az_monitor_mi
 WORKDIR /app
-RUN git clone --depth 1 --branch v0.1.0 https://github.com/gridscale/linux-psi-telegraf-plugin.git linux-psi-telegraf-plugin
+RUN git clone --depth 2  https://github.com/jojokoshy/azure_monitor azure_monitor_mi
 
-# Build psi binary
+# Build Azure Monitor MI binary
 
-FROM golang:1.16-alpine AS binary-psi
+FROM golang:1.16-alpine AS binary-az_monitor_mi
 WORKDIR /go/src/app/
-COPY --from=git-psi /app/ ./
-WORKDIR /go/src/app/linux-psi-telegraf-plugin
-RUN go build -o psi cmd/main.go
+COPY --from=git-az_monitor_mi /app/ ./
+WORKDIR /go/src/app/azure_monitor_mi
+RUN go build -o azure_monitor_mi cmd/main.go
+
+# Get repo for Random Int Generator Telegraf Plugin
+FROM bitnami/git AS git-random_int_generator
+WORKDIR /app
+RUN git clone --depth 2  https://github.com/ssoroka/rand.git rand
+
+# Build Random Int Generator Telegraf Plugin binary
+FROM golang:1.16-alpine AS binary-rand
+WORKDIR /go/src/app/
+COPY --from=git-random_int_generator /app/ ./
+WORKDIR /go/src/app/rand
+RUN go build -o rand cmd/main.go
 
 # Build the telegraf container with your plugins
 FROM telegraf:alpine
-
-COPY --from=binary-psi /go/src/app/linux-psi-telegraf-plugin/psi /usr/local/bin/psi
+COPY --from=binary-az_monitor_mi /go/src/app/azure_monitor_mi/azure_monitor_mi /usr/local/bin/azure_monitor_mi
+COPY --from=binary-rand /go/src/app/rand/rand /usr/local/bin/rand

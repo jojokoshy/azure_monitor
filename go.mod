@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/influxdata/telegraf v1.15.2
-	github.com/jojokoshy/azure-monitor-metrics-receiver v1.0.7
+	github.com/jojokoshy/azure-monitor-metrics-receiver v1.0.8
 )
 
 require (
