@@ -336,6 +336,8 @@ github.com/jmespath/go-jmespath v0.3.0/go.mod h1:9QtRXoHjLGCJ5IBSaohpXITPlowMeeY
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
 github.com/jojokoshy/azure-monitor-metrics-receiver v1.0.7 h1:0DuDclDcR/eYbD2GBqLgG3MRPgAlKh+D5RP8pkGMQCc=
 github.com/jojokoshy/azure-monitor-metrics-receiver v1.0.7/go.mod h1:goC9e1vDQPMUWfcrwh/NkDf/QByu3TZcsMo5x6Tedbg=
+github.com/jojokoshy/azure-monitor-metrics-receiver v1.0.8 h1:bOjYgyLrS+BfbpvEY3zlG+1uszc13WD56oKIUfyyweQ=
+github.com/jojokoshy/azure-monitor-metrics-receiver v1.0.8/go.mod h1:goC9e1vDQPMUWfcrwh/NkDf/QByu3TZcsMo5x6Tedbg=
 github.com/jpillora/backoff v0.0.0-20180909062703-3050d21c67d7 h1:K//n/AqR5HjG3qxbrBCL4vJPW0MVFSs9CPK1OOJdRME=
 github.com/jpillora/backoff v0.0.0-20180909062703-3050d21c67d7/go.mod h1:2iMrUgbbvHEiQClaW2NsSzMyGHqN+rDFqY705q49KG0=
 github.com/jsimonetti/rtnetlink v0.0.0-20190606172950-9527aa82566a/go.mod h1:Oz+70psSo5OFh8DBl0Zv2ACw7Esh6pPUphlvZG9x7uw=

@@ -17,21 +17,6 @@ var pollIntervalDisabled = flag.Bool("poll_interval_disabled", false, "how often
 var configFile = flag.String("config", "", "path to the config file for this plugin")
 var err error
 
-// This is designed to be simple; Just change the import above and you're good.
-//
-// However, if you want to do all your config in code, you can like so:
-//
-// // initialize your plugin with any settngs you want
-//
-//	myInput := &mypluginname.MyPlugin{
-//		DefaultSettingHere: 3,
-//	}
-//
-// shim := shim.New()
-//
-// shim.AddInput(myInput)
-//
-// // now the shim.Run() call as below.
 func main() {
 	// parse command line options
 	flag.Parse()
